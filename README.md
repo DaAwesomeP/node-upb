@@ -1,6 +1,7 @@
 ﻿node-upb
 ========
 ---
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/DaAwesomeP/node-upb?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A NodeJS library that generates (and will soon decode) UPB (Universal Powerline Bus) commands. **If you are looking for the CLI program that uses this, then please see [upb-cli](https://github.com/DaAwesomeP/upb-cli/).**
 
 **This has only been tested with Simply Automated switches!** While probably won't harm your device (it is sending control commands, not core commands), I'm not sure what will happen when this is used with other branded switches (like PCS).
