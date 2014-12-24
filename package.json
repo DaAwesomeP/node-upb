@@ -6,7 +6,6 @@
   "bugs": "https://github.com/DaAwesomeP/node-upb/issues",
   "license": "Apache-2.0",
   "main": "./upb.js",
-  "man": "./README.md",
   "repository" : {
 	"type" : "git",
 	"url" : "https://github.com/DaAwesomeP/node-upb.git"
