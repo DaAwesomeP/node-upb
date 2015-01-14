@@ -121,7 +121,7 @@ function generate(command, callbackFinal) {// generate(commandInputAsJSON, funct
 	if (command.cmd == "blink" && !command.blinkRate) { callbackFinal(null, new Error ("No blink rate specified!")); }
 	if (command.cmd == "toggle" && !command.toggleCount) { callbackFinal(null, new Error ("No toggle count specified!")); }
 	
-	if (command.level && (command.cmd == "goto" || command.cmd == "fadeStart" || command.cmd == "fadeStop" || command.cmd == "toggle" || command.cmd == "indicate")) { // Add level
+	if (command.level && (command.cmd == "goto" || command.cmd == "fadeStart" || command.cmd == "fadeStop" || command.cmd == "indicate")) { // Add level
 		command.words++;
 		command.hex.level = parseInt(command.level).toString(16);
 	}
@@ -285,7 +285,7 @@ function decode(commandGenerated, callbackFinal) { // decode(commandInputAsStr, 
 	
 	command.checksum = command.generated.slice(-2).toString(16);
 	
-	if (command.words > 7 && command.checksum != String(command.generated.substring(12,14)) && (command.cmd == "goto" || command.cmd == "fadeStart" || command.cmd == "fadeStop" || command.cmd == "toggle" || command.cmd == "deviceStateReport" || command.cmd == "indicate")) { // Add level
+	if (command.words > 7 && command.checksum != String(command.generated.substring(12,14)) && (command.cmd == "goto" || command.cmd == "fadeStart" || command.cmd == "fadeStop" || command.cmd == "deviceStateReport" || command.cmd == "indicate")) { // Add level
 		command.hex.level = command.generated.substring(12,14).toString(16);
 		command.level = parseInt(command.hex.level, 16);
 	}
@@ -301,12 +301,11 @@ function decode(commandGenerated, callbackFinal) { // decode(commandInputAsStr, 
 		command.hex.toggleCount = command.generated.substring(12,14).toString(16);
 		command.toggleCount = parseInt(command.hex.toggleCount, 16);
 	}
-	if (command.toggleRate && command.cmd == "toggle") { // Add toggle rate
+	if (command.words > 8 && command.cmd == "toggle") { // Add toggle rate
 		command.hex.toggleRate = command.generated.substring(14,16).toString(16);
 		command.toggleRate = parseInt(command.hex.toggleRate, 16);
 	}
 	if (command.words > 9 && command.checksum != String(command.generated.substring(12,14)) && command.rate && command.type == "device" && (command.cmd == "goto" || command.cmd == "fadeStart" || command.cmd == "toggle" || command.cmd == "indicate")) { // Add channel
-		command.words++;
 		command.hex.channel = command.generated.substring(16,18).toString(16);
 		command.channel = parseInt(command.hex.channel, 16);
 	}
