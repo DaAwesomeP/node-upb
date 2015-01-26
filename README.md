@@ -2,11 +2,13 @@
 ========
 [![npm](http://img.shields.io/npm/v/upb.svg?style=flat-square)](https://www.npmjs.org/package/upb) [![npm](http://img.shields.io/npm/dm/upb.svg?style=flat-square)](https://www.npmjs.org/package/upb) [![David](https://img.shields.io/david/DaAwesomeP/node-upb.svg?style=flat-square)](https://david-dm.org/DaAwesomeP/node-upb) [![npm](http://img.shields.io/npm/l/upb.svg?style=flat-square)](https://github.com/DaAwesomeP/node-upb/blob/master/LICENSE) [![Gitter chat](https://badges.gitter.im/DaAwesomeP/node-upb.png?style=flat-square)](https://gitter.im/DaAwesomeP/node-upb)
 ---
-A NodeJS library that generates and decodes UPB (Universal Powerline Bus) commands. **If you are looking for the CLI program that uses this, then please see [upb-cli](https://github.com/DaAwesomeP/upb-cli/).**
+A NodeJS, browser, AMD, and CommonJS (that includes RequireJS) library that generates and decodes UPB (Universal Powerline Bus) commands. **If you are looking for the CLI program that uses this, then please see [upb-cli](https://github.com/DaAwesomeP/upb-cli/).**
 
 **This has only been tested with Simply Automated switches!** While probably won't harm your device (it is sending control commands, not core commands), I'm not sure what will happen when this is used with other branded switches (like PCS).
 
 ## Installation
+
+### Node
 Install it to your project folder:
 ```bash
 npm install upb
@@ -15,6 +17,13 @@ Then include it in your file:
 ```javascript
 var upb = require("upb");
 ```
+
+### Browser
+Download the [latest release](https://github.com/DaAwesomeP/node-upb/releases/latest) and include it in your page:
+```html
+<script type="text/javascript" src="upb.js"></script>
+```
+Use it with the `upb` object. The examples below should work fine.
 
 ## Usage
 

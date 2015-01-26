@@ -1,6 +1,6 @@
 {
   "name": "upb",
-  "description": "A NodeJS library that generates and decodes UPB (Universal Powerline Bus) commands.",
+  "description": "A NodeJS, browser, AMD, and CommonJS library that generates and decodes UPB (Universal Powerline Bus) commands.",
   "keywords": "upb, library, universal powerline bus, command, lib, lighting, switches, control",
   "homepage": "https://github.com/DaAwesomeP/node-upb/",
   "bugs": "https://github.com/DaAwesomeP/node-upb/issues",
