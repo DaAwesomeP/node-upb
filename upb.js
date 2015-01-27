@@ -80,8 +80,8 @@
 	};
 
 	upb.generateChecksum = function(commandCheck) {
-		var checksum = parseInt(commandCheck.hex.ctrlWord.fullByte1.slice(0,2), 16);
-		checksum += parseInt(commandCheck.hex.ctrlWord.fullByte2.slice(0,2), 16);
+		var checksum = parseInt(commandCheck.hex.ctrlWord.byte1.slice(0,2), 16);
+		checksum += parseInt(commandCheck.hex.ctrlWord.byte2.slice(0,2), 16);
 		checksum += parseInt(commandCheck.hex.network.slice(0,2), 16);
 		checksum += parseInt(commandCheck.hex.id.slice(0,2), 16);
 		checksum += parseInt(commandCheck.hex.source.slice(0,2), 16);
@@ -111,11 +111,11 @@
 		if (!command.source) { command.source = 255; }
 		
 		command.ctrlWord = {};
-		command.ctrlWord.byte1 = 0;
-		command.ctrlWord.byte2 = 0;
+		command.ctrlWord.nibble1 = 0;
+		command.ctrlWord.nibble2 = 0;
 		command.words = 7;
-		command.ctrlWord.byte3 = 0;
-		command.ctrlWord.byte4 = 0;
+		command.ctrlWord.nibble3 = 0;
+		command.ctrlWord.nibble4 = 0;
 		
 		command.hex = {};
 		command.hex.network = parseInt(command.network).toString(16);
@@ -172,34 +172,34 @@
 			command.hex.channel = parseInt(command.channel).toString(16);
 		}
 		
-		if (command.type == "link") { command.ctrlWord.byte1 += 8; }
-		if (command.powerlineRepeater == 1) { command.ctrlWord.byte1 += 2; }
-		else if (command.powerlineRepeater == 2) { command.ctrlWord.byte1 += 4; }
-		else if (command.powerlineRepeater == 4) { command.ctrlWord.byte1 += 6; }
+		if (command.type == "link") { command.ctrlWord.nibble1 += 8; }
+		if (command.powerlineRepeater == 1) { command.ctrlWord.nibble1 += 2; }
+		else if (command.powerlineRepeater == 2) { command.ctrlWord.nibble1 += 4; }
+		else if (command.powerlineRepeater == 4) { command.ctrlWord.nibble1 += 6; }
 		
-		command.ctrlWord.byte2 = command.words;
+		command.ctrlWord.nibble2 = command.words;
 		
-		if (command.ackPulse == true) { command.ctrlWord.byte3 += 1; }
-		if (command.idPulse == true) { command.ctrlWord.byte3 += 2; }
-		if (command.ackMsg == true) { command.ctrlWord.byte3 += 4; }
+		if (command.ackPulse == true) { command.ctrlWord.nibble3 += 1; }
+		if (command.idPulse == true) { command.ctrlWord.nibble3 += 2; }
+		if (command.ackMsg == true) { command.ctrlWord.nibble3 += 4; }
 		
-		if (command.sendx == 2) { command.ctrlWord.byte4 += 4; }
-		else if (command.sendx == 3) { command.ctrlWord.byte4 += 8; }
-		else if (command.sendx == 4) { command.ctrlWord.byte4 += 12; }
-		if (command.sendTime == 2) { command.ctrlWord.byte4 += 1; }
-		else if (command.sendTime == 3) { command.ctrlWord.byte4 += 2; }
-		else if (command.sendTime == 4) { command.ctrlWord.byte4 += 3; }
+		if (command.sendx == 2) { command.ctrlWord.nibble4 += 4; }
+		else if (command.sendx == 3) { command.ctrlWord.nibble4 += 8; }
+		else if (command.sendx == 4) { command.ctrlWord.nibble4 += 12; }
+		if (command.sendTime == 2) { command.ctrlWord.nibble4 += 1; }
+		else if (command.sendTime == 3) { command.ctrlWord.nibble4 += 2; }
+		else if (command.sendTime == 4) { command.ctrlWord.nibble4 += 3; }
 		
 		command.hex.ctrlWord = {};
-		command.hex.ctrlWord.byte1 = parseInt(command.ctrlWord.byte1).toString(16);
-		command.hex.ctrlWord.byte2 = parseInt(command.words).toString(16);
-		command.hex.ctrlWord.byte3 = parseInt(command.ctrlWord.byte3).toString(16);
-		command.hex.ctrlWord.byte4 = parseInt(command.ctrlWord.byte4).toString(16);
-		command.hex.ctrlWord.fullByte1 = command.hex.ctrlWord.byte1 + command.hex.ctrlWord.byte2;
-		command.hex.ctrlWord.fullByte2 = command.hex.ctrlWord.byte3 + command.hex.ctrlWord.byte4;
+		command.hex.ctrlWord.nibble1 = parseInt(command.ctrlWord.nibble1).toString(16);
+		command.hex.ctrlWord.nibble2 = parseInt(command.words).toString(16);
+		command.hex.ctrlWord.nibble3 = parseInt(command.ctrlWord.nibble3).toString(16);
+		command.hex.ctrlWord.nibble4 = parseInt(command.ctrlWord.nibble4).toString(16);
+		command.hex.ctrlWord.byte1 = command.hex.ctrlWord.nibble1 + command.hex.ctrlWord.nibble2;
+		command.hex.ctrlWord.byte2 = command.hex.ctrlWord.nibble3 + command.hex.ctrlWord.nibble4;
 		
-		command.generated = command.hex.ctrlWord.fullByte1;
-		command.generated += command.hex.ctrlWord.fullByte2;
+		command.generated = command.hex.ctrlWord.byte1;
+		command.generated += command.hex.ctrlWord.byte2;
 		command.generated += pad(command.hex.network, 2, 0);
 		command.generated += pad(command.hex.id, 2, 0);
 		command.generated += pad(command.hex.source, 2, 0);
@@ -225,26 +225,26 @@
 		command.generated = commandGenerated.toUpperCase();
 		
 		command.hex.ctrlWord = {};
-		command.hex.ctrlWord.fullByte1 = command.generated.substring(0,2).toString(16);
-		command.hex.ctrlWord.fullByte2 = command.generated.substring(2,4).toString(16);
-		command.hex.ctrlWord.byte1 = command.generated.substring(0,1).toString(16);
-		command.hex.ctrlWord.byte2 = command.generated.substring(1,2).toString(16);
-		command.hex.ctrlWord.byte3 = command.generated.substring(2,3).toString(16);
-		command.hex.ctrlWord.byte4 = command.generated.substring(3,4).toString(16);
+		command.hex.ctrlWord.byte1 = command.generated.substring(0,2).toString(16);
+		command.hex.ctrlWord.byte2 = command.generated.substring(2,4).toString(16);
+		command.hex.ctrlWord.nibble1 = command.generated.substring(0,1).toString(16);
+		command.hex.ctrlWord.nibble2 = command.generated.substring(1,2).toString(16);
+		command.hex.ctrlWord.nibble3 = command.generated.substring(2,3).toString(16);
+		command.hex.ctrlWord.nibble4 = command.generated.substring(3,4).toString(16);
 		
 		command.ctrlWord = {};
-		command.ctrlWord.byte1 = parseInt(command.hex.ctrlWord.byte1, 16);
-		command.ctrlWord.byte2 = parseInt(command.hex.ctrlWord.byte2, 16);
-		command.ctrlWord.byte3 = parseInt(command.hex.ctrlWord.byte3, 16);
-		command.ctrlWord.byte4 = parseInt(command.hex.ctrlWord.byte4, 16);
+		command.ctrlWord.nibble1 = parseInt(command.hex.ctrlWord.nibble1, 16);
+		command.ctrlWord.nibble2 = parseInt(command.hex.ctrlWord.nibble2, 16);
+		command.ctrlWord.nibble3 = parseInt(command.hex.ctrlWord.nibble3, 16);
+		command.ctrlWord.nibble4 = parseInt(command.hex.ctrlWord.nibble4, 16);
 		
-		if (command.ctrlWord.byte1 >= 8) {
+		if (command.ctrlWord.nibble1 >= 8) {
 			command.type = "link";
-			command.powerlineRepeater = command.ctrlWord.byte1 - 8;
+			command.powerlineRepeater = command.ctrlWord.nibble1 - 8;
 		}
 		else {
 			command.type = "device";
-			command.powerlineRepeater = command.ctrlWord.byte1;
+			command.powerlineRepeater = command.ctrlWord.nibble1;
 		}
 		if (command.powerlineRepeater == 0) { command.powerlineRepeater = 0; }
 		else if (command.powerlineRepeater == 2) { command.powerlineRepeater = 1; }
@@ -252,30 +252,30 @@
 		else if (command.powerlineRepeater == 6) { command.powerlineRepeater = 4; }
 		else { callbackFinal(null, new Error ("Invalid command! Powerline repeater argument can only be 1, 2, or 4 which translates into 2, 4, or 6.")); }
 		
-		command.words = command.ctrlWord.byte2;
+		command.words = command.ctrlWord.nibble2;
 		if (command.generated.length/2 != command.words) {
 			callbackFinal(null, new Error ("Invalid command! Word count doesn't add up.'"));
 		}
 		
-		if (command.ctrlWord.byte3 == 1) { command.ackPulse = true; }
-		if (command.ctrlWord.byte3 == 2) { command.idPulse = true; }
-		if (command.ctrlWord.byte3 == 3) { command.ackPulse = true; command.idPulse = true; }
-		if (command.ctrlWord.byte3 == 4) { command.ackMsg = true; }
-		if (command.ctrlWord.byte3 == 5) { command.ackPulse = true; command.ackMsg = true; }
-		if (command.ctrlWord.byte3 == 6) { command.idPulse = true; command.ackMsg = true; }
-		if (command.ctrlWord.byte3 == 7) { command.ackPulse = true; command.idPulse = true; command.ackMsg = true; }
-		if (command.ctrlWord.byte3 > 7) { callbackFinal(null, new Error ("Invalid command! Any number greater than seven cannot be an Acknowledge Pulse, ID Pulse, or Acknowledge Message.")); }
+		if (command.ctrlWord.nibble3 == 1) { command.ackPulse = true; }
+		if (command.ctrlWord.nibble3 == 2) { command.idPulse = true; }
+		if (command.ctrlWord.nibble3 == 3) { command.ackPulse = true; command.idPulse = true; }
+		if (command.ctrlWord.nibble3 == 4) { command.ackMsg = true; }
+		if (command.ctrlWord.nibble3 == 5) { command.ackPulse = true; command.ackMsg = true; }
+		if (command.ctrlWord.nibble3 == 6) { command.idPulse = true; command.ackMsg = true; }
+		if (command.ctrlWord.nibble3 == 7) { command.ackPulse = true; command.idPulse = true; command.ackMsg = true; }
+		if (command.ctrlWord.nibble3 > 7) { callbackFinal(null, new Error ("Invalid command! Any number greater than seven cannot be an Acknowledge Pulse, ID Pulse, or Acknowledge Message.")); }
 		
-		if (command.ctrlWord.byte4 == 0) { command.sendx = 1; command.sendTime = 1; }
-		else if (command.ctrlWord.byte4 == 4) { command.sendx = 2; command.sendTime = 1; }
-		else if (command.ctrlWord.byte4 == 5) { command.sendx = 2; command.sendTime = 2; }
-		else if (command.ctrlWord.byte4 == 8) { command.sendx = 3; command.sendTime = 1; }
-		else if (command.ctrlWord.byte4 == 9) { command.sendx = 3; command.sendTime = 2; }
-		else if (command.ctrlWord.byte4 == 10) { command.sendx = 3; command.sendTime = 3; }
-		else if (command.ctrlWord.byte4 == 12) { command.sendx = 4; command.sendTime = 1; }
-		else if (command.ctrlWord.byte4 == 12) { command.sendx = 4; command.sendTime = 2; }
-		else if (command.ctrlWord.byte4 == 13) { command.sendx = 4; command.sendTime = 3; }
-		else if (command.ctrlWord.byte4 == 14) { command.sendx = 4; command.sendTime = 4; }
+		if (command.ctrlWord.nibble4 == 0) { command.sendx = 1; command.sendTime = 1; }
+		else if (command.ctrlWord.nibble4 == 4) { command.sendx = 2; command.sendTime = 1; }
+		else if (command.ctrlWord.nibble4 == 5) { command.sendx = 2; command.sendTime = 2; }
+		else if (command.ctrlWord.nibble4 == 8) { command.sendx = 3; command.sendTime = 1; }
+		else if (command.ctrlWord.nibble4 == 9) { command.sendx = 3; command.sendTime = 2; }
+		else if (command.ctrlWord.nibble4 == 10) { command.sendx = 3; command.sendTime = 3; }
+		else if (command.ctrlWord.nibble4 == 12) { command.sendx = 4; command.sendTime = 1; }
+		else if (command.ctrlWord.nibble4 == 12) { command.sendx = 4; command.sendTime = 2; }
+		else if (command.ctrlWord.nibble4 == 13) { command.sendx = 4; command.sendTime = 3; }
+		else if (command.ctrlWord.nibble4 == 14) { command.sendx = 4; command.sendTime = 4; }
 		else { callbackFinal(null, new Error ("Invalid command! Send time is greater than total sent times.")); }
 		
 		command.hex.network = command.generated.substring(4,6).toString(16);

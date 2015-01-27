@@ -19,11 +19,11 @@ var upb = require("upb");
 ```
 
 ### Browser
-Download the [latest release](https://github.com/DaAwesomeP/node-upb/releases/latest) and include it in your page:
+Download the [latest release](https://github.com/DaAwesomeP/node-upb/releases/latest) (there is a minified version at that link) and include it in your page:
 ```html
 <script type="text/javascript" src="upb.js"></script>
 ```
-Use it with the `upb` object. The examples below should work fine.
+Use it with the `upb` object. The examples below should work fine. **I normally use this as a NodeJS library; if you encounter any bugs, please report them.**
 
 ## Usage
 
