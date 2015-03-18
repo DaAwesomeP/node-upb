@@ -98,3 +98,7 @@ I got most of the information the last three items listed on this Simply Automat
  - **UPB Powerline Interface Module (PIM) - Description** - This PDF contains information about the PIM. It shows serial specifications (4800 baud 8-n-1) and PIM responses. It look me a while to figure out that the PIM always responds with `PE` whenever a command is not prefixed by the #20 character.
 
 ![](https://d2weczhvl823v0.cloudfront.net/DaAwesomeP/node-upb/trend.png)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/DaAwesomeP/node-upb/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
