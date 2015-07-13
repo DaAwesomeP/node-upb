@@ -1,6 +1,6 @@
 {
   "name": "upb",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "homepage": "https://github.com/DaAwesomeP/node-upb",
   "authors": [
     { "name": "DaAwesomeP", "homepage": "https://daawesomep.github.io" }
