@@ -1,7 +1,18 @@
 {
   "name": "upb",
   "description": "A NodeJS, browser, AMD, and CommonJS library that generates and decodes UPB (Universal Powerline Bus) commands.",
-  "keywords": "upb, library, universal powerline bus, command, lib, lighting, switches, control",
+  "keywords": [
+    "upb",
+    "library",
+    "universal",
+    "powerline",
+    "bus",
+    "command",
+    "lib",
+    "lighting",
+    "switches",
+    "control"
+  ],
   "homepage": "https://github.com/DaAwesomeP/node-upb/",
   "bugs": "https://github.com/DaAwesomeP/node-upb/issues",
   "license": "Apache-2.0",
@@ -11,11 +22,8 @@
     "url": "https://github.com/DaAwesomeP/node-upb.git"
   },
   "version": "1.2.0",
-  "author": [
-    {
-      "name": "DaAwesomeP",
-      "url": "https://daawesomep.guthub.io/"
-    },
-	"github": "https://github.com/DaAwesomeP/node-upb"
-  ]
+  "author": {
+    "name": "DaAwesomeP",
+    "url": "https://daawesomep.guthub.io/"
+  }
 }

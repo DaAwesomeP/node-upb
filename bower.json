@@ -1,0 +1,47 @@
+{
+  "name": "upb",
+  "version": "1.2.1",
+  "homepage": "https://github.com/DaAwesomeP/node-upb",
+  "authors": [
+    { "name": "DaAwesomeP", "homepage": "https://daawesomep.github.io" }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/DaAwesomeP/node-upb.git"
+  },
+  "description": "A NodeJS, browser, AMD, and CommonJS library that generates and decodes UPB (Universal Powerline Bus) commands.",
+  "main": "./upb.js",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "upb",
+    "library",
+    "universal",
+    "powerline",
+    "bus",
+    "command",
+    "lib",
+    "lighting",
+    "switches",
+    "control"
+  ],
+  "license": "Apache-2.0",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "npm-debug.log",
+    ".*.swp._*",
+    ".DS_Store",
+    ".git",
+    ".hg",
+    ".lock-wscript",
+    ".svn",
+    ".wafpickle-*",
+    "CVS"
+  ]
+}

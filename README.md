@@ -1,4 +1,4 @@
-﻿node-upb
+﻿﻿node-upb
 ========
 [![npm](http://img.shields.io/npm/v/upb.svg?style=flat-square)](https://www.npmjs.org/package/upb) [![npm](http://img.shields.io/npm/dm/upb.svg?style=flat-square)](https://www.npmjs.org/package/upb) [![David](https://img.shields.io/david/DaAwesomeP/node-upb.svg?style=flat-square)](https://david-dm.org/DaAwesomeP/node-upb) [![npm](http://img.shields.io/npm/l/upb.svg?style=flat-square)](https://github.com/DaAwesomeP/node-upb/blob/master/LICENSE) [![Gitter chat](https://badges.gitter.im/DaAwesomeP/node-upb.png?style=flat-square)](https://gitter.im/DaAwesomeP/node-upb)
 ---
@@ -19,11 +19,11 @@ var upb = require("upb");
 ```
 
 ### Browser
-Download the [latest release](https://github.com/DaAwesomeP/node-upb/releases/latest) (there is a minified version at that link) and include it in your page:
+Download the [latest release](https://github.com/DaAwesomeP/node-upb/releases/latest) and include it in your page:
 ```html
 <script type="text/javascript" src="upb.js"></script>
 ```
-Use it with the `upb` object. The examples below should work fine. **I normally use this as a NodeJS library; if you encounter any bugs, please report them.**
+Use it with the `upb` object. The examples below should work fine.
 
 ## Usage
 
@@ -96,4 +96,7 @@ I got most of the information the last three items listed on this Simply Automat
  - **UPB System Description** - This PDF describes all parts of the UPB protocol.
  - **UPB Command Wizard - Software** - This program lets you build commands with a wizard/GUI and see the result. It does not actually send the command, but it is very valuable for understanding the commands without reading too much of the above PDF.
  - **UPB Powerline Interface Module (PIM) - Description** - This PDF contains information about the PIM. It shows serial specifications (4800 baud 8-n-1) and PIM responses. It look me a while to figure out that the PIM always responds with `PE` whenever a command is not prefixed by the #20 character.
- 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/DaAwesomeP/node-upb/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
