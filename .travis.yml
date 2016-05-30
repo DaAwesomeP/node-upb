@@ -1,0 +1,13 @@
+language: node_js
+node_js:
+  - "node"
+  - v6
+  - v5
+  - v4
+sudo: false
+after_script:
+ - npm i coveralls
+ - cat ./coverage/lcov.info | node ./node_modules/coveralls/bin/coveralls
+cache:
+  directories:
+    - node_modules

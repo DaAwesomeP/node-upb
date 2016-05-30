@@ -1,6 +1,6 @@
 {
   "name": "upb",
-  "description": "A NodeJS, browser, Bower, AMD, and CommonJS library that generates and decodes UPB (Universal Powerline Bus) commands.",
+  "description": "Generate and decode UPB (Universal Powerline Bus) commands",
   "keywords": [
     "upb",
     "library",
@@ -16,7 +16,10 @@
   "homepage": "https://github.com/DaAwesomeP/node-upb/",
   "bugs": "https://github.com/DaAwesomeP/node-upb/issues",
   "license": "Apache-2.0",
-  "main": "./upb.js",
+  "files": [
+    "lib"
+  ],
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/DaAwesomeP/node-upb.git"
@@ -25,5 +28,38 @@
   "author": {
     "name": "DaAwesomeP",
     "url": "https://daawesomep.guthub.io/"
+  },
+  "scripts": {
+    "prepublish": "nsp check",
+    "test": "istanbul cover node_modules/mocha/bin/_mocha \"test/**/*.js\""
+  },
+  "engines" : { "node" : ">=4" },
+  "devDependencies": {
+    "chai": "3.5.*",
+    "chai-as-promised": "5.3.*",
+    "eslint": "2.11.*",
+    "istanbul": "0.4.*",
+    "mocha": "2.5.*",
+    "mocha-eslint": "2.0.*",
+    "nsp": "*"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "commonjs": true,
+      "node": true,
+      "amd": true,
+      "mocha": true,
+      "es6": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+      "eqeqeq": [ "error" ],
+      "indent": [ "error", 2 ],
+      "linebreak-style": [ "error", "unix" ],
+      "quotes": [ "error", "single" ],
+      "semi": [ "error", "always" ],
+      "strict": [ "error", "safe" ]
+    }
   }
 }

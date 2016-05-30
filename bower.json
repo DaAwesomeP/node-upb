@@ -9,8 +9,8 @@
     "type": "git",
     "url": "git://github.com/DaAwesomeP/node-upb.git"
   },
-  "description": "A NodeJS, browser, Bower, AMD, and CommonJS library that generates and decodes UPB (Universal Powerline Bus) commands.",
-  "main": "./upb.js",
+  "description": "Generate and decode UPB (Universal Powerline Bus) commands",
+  "main": "lib/index.js",
   "moduleType": [
     "amd",
     "globals",
