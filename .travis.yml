@@ -11,3 +11,10 @@ after_script:
 cache:
   directories:
     - node_modules
+notifications:
+  webhooks:
+    urls:
+      - Ghttps://webhooks.gitter.im/e/bef1f5bb03af7e8814f0
+    on_success: always
+    on_failure: always
+    on_start: always
