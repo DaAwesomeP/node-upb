@@ -24,7 +24,7 @@
     "type": "git",
     "url": "https://github.com/DaAwesomeP/node-upb.git"
   },
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": {
     "name": "DaAwesomeP",
     "url": "https://daawesomep.guthub.io/"
@@ -33,7 +33,9 @@
     "prepublish": "nsp check",
     "test": "istanbul cover node_modules/mocha/bin/_mocha \"test/**/*.js\""
   },
-  "engines" : { "node" : ">=4" },
+  "engines": {
+    "node": ">=4"
+  },
   "devDependencies": {
     "chai": "3.5.*",
     "chai-as-promised": "5.3.*",
@@ -54,12 +56,29 @@
     },
     "extends": "eslint:recommended",
     "rules": {
-      "eqeqeq": [ "error" ],
-      "indent": [ "error", 2 ],
-      "linebreak-style": [ "error", "unix" ],
-      "quotes": [ "error", "single" ],
-      "semi": [ "error", "always" ],
-      "strict": [ "error", "safe" ]
+      "eqeqeq": [
+        "error"
+      ],
+      "indent": [
+        "error",
+        2
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "strict": [
+        "error",
+        "safe"
+      ]
     }
   }
 }
