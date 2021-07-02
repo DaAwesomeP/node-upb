@@ -26,8 +26,8 @@
   },
   "version": "2.0.1",
   "author": {
-    "name": "DaAwesomeP",
-    "url": "https://daawesomep.guthub.io/"
+    "name": "Perry Naseck (DaAwesomeP)",
+    "url": "https://perrynaseck.com/"
   },
   "scripts": {
     "prepublish": "nsp check",
